@@ -11,12 +11,13 @@ COPY hugo.yml hugo.yml
 
 RUN hugo
 
-
 FROM nginx:1.27-alpine
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /src/public /usr/share/nginx/html
 
-EXPOSE 1313
+ENV PORT=1313
+
+EXPOSE $PORT
 
 CMD ["nginx", "-g", "daemon off;"]

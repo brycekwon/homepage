@@ -46,7 +46,7 @@ params:
     favicon: "/favicon.ico"
 
   label:
-    text: "Bryce Kwon's Website"
+    text: "Bryce Kwon"
   
   homeInfoParams:
     Title: "Hi there. I'm a bug on the Internet."
@@ -60,7 +60,7 @@ params:
 
   # socialIcons:
   #   - name: github
-  #     url: "https://github.com/Wonderfall"
+  #     url: "https://github.com/brycekwon"
   #   - name: linkedin
   #     url: "https://www.linkedin.com/in/brycekwon"
 
@@ -70,7 +70,7 @@ params:
     hiddenInSingle: true
 
   editPost:
-    URL: "https://github.com/brycekwon/www.brycekwon.com/blob/main/content"
+    URL: "https://github.com/brycekwon/homepage/blob/main/content"
     Text: "Suggest Changes"
     appendFilePath: true
 
