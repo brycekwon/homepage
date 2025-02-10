@@ -1,0 +1,119 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+{{ $title := ""}}
+{{ if .IsPage }}
+    {{ if (eq .Layout "search") }}
+        {{ $title = printf "%s | %s" .Title .Site.Title }}
+    {{ else }}
+        {{ $title = printf "%s" .Title }}
+    {{ end }}
+{{ else if .IsNode }}
+    {{ $title = printf "%s | %s" .Title .Site.Title }}
+{{ end }}
+{{ if .IsHome }}
+    {{ $title = printf "%s" .Site.Params.author }}
+{{ end }}
+
+{{ $description := "" }}
+{{ if .Description }}
+    {{ $description = .Description }}
+{{ else }}
+    {{ $description = .Summary }}
+{{ end }}
+
+{{ $keywords := "" }}
+{{ with .Keywords }}
+    {{ $keywords = delimit . ", " }}
+{{ end }}
+
+<!-- General Site Metadata -->
+<title>{{- $title -}}</title>
+<meta name="description" content="{{- $description -}}">
+<meta name="keywords" content="{{- $keywords -}}">
+<meta name="author" content="{{- .Site.Params.author -}}">
+<meta name="color-scheme" content="dark light">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{{- .Permalink -}}">
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<!-- Open Graph / Meta / Facebook Metadata -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{- $title -}}">
+<meta property="og:description" content="{{- $description -}}">
+<meta property="og:url" content="{{- .Permalink -}}">
+<meta property="og:image" content="{{- with resources.Get "img/profile.webp" -}}{{- .Permalink -}}{{- end -}}">
+
+<!-- Twitter / X Metadata -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{- $title -}}">
+<meta name="twitter:description" content="{{- $description -}}">
+<meta name="twitter:url" content="{{- .Permalink -}}">
+<meta name="twitter:image" content="{{- with resources.Get "img/profile.webp" -}}{{- .Permalink -}}{{- end -}}">
+
+<script type="application/ld+json">
+    {{ if eq .Section "posts" }}
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{- .Permalink -}}"
+            },
+            "headline": "{{- .Title -}}",
+            "author": {
+                "@type": "Person",
+                "name": "{{- .Site.Params.author -}}"
+            },  
+            "datePublished": "{{- .Date.Format "2006-01-02" -}}",
+            {{ if ne .Lastmod .Date }}
+                "dateModified": "{{- .Lastmod.Format "2006-01-02" -}}"
+            {{ end }}
+        }
+    {{ else if eq .Section "projects" }}
+        {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "{{- .Permalink -}}"
+            },
+            "headline": "{{- .Title -}}",
+            "author": {
+                "@type": "Person",
+                "name": "{{- .Site.Params.author -}}"
+            },
+        }
+    {{ else }}
+        {
+            "@context": "https://schema.org/",
+            "@type": "WebSite",
+            "name": "{{- .Site.Title -}}",
+            "url": "{{- .Permalink -}}",
+        }
+    {{ end }}
+</script>
+
+{{ $theme_vars := (resources.Get "css/core/theme-vars.css") }}
+{{ $reset := (resources.Get "css/core/reset.css") }}
+{{ $common := (resources.Match "css/common/*.css") | resources.Concat "css/common.css" }}
+{{ $media := (resources.Get "css/core/zmedia.css") }}
+
+{{ $core := (slice $theme_vars $reset $common $media) | resources.Concat "css/core.css" }}
+{{ $includes := (resources.Match "css/includes/*.css") | resources.Concat "css/includes.css" }}
+
+{{ $stylesheet := (slice $core $includes) | resources.Concat "css/styles.css" | postCSS | minify | fingerprint "sha256" | resources.PostProcess }}
+<link crossorigin="anonymous" href="{{- $stylesheet.Permalink -}}" integrity="{{- $stylesheet.Data.Integrity -}}" rel="preload stylesheet" as="style">
+
+<noscript>
+    {{ $noscript := resources.Get "css/noscript.css" | postCSS | minify | fingerprint "sha256" | resources.PostProcess }}
+    <link crossorigin="anonymous" href="{{- $noscript.Permalink -}}" integrity="{{- $noscript.Data.Integrity -}}" rel="preload stylesheet" as="style">
+</noscript>
+
+{{ if (eq .Layout `search`) }}
+    {{ $search := resources.Get "js/search.js" | js.Build (dict "format" "esm") | minify | fingerprint "sha256" }}
+    <script defer crossorigin="anonymous" src="{{- $search.Permalink -}}" integrity="{{- $search.Data.Integrity -}}"></script>
+{{ end }}
+
+{{ $script := resources.Get "js/theme.js" | js.Build (dict "format" "esm") | minify | fingerprint "sha256" }}
+<script defer crossorigin="anonymous" src="{{- $script.Permalink -}}" integrity="{{- $script.Data.Integrity -}}"></script>

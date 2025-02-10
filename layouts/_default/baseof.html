@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html lang="{{- site.Language -}}" dir="ltr">
+    <head>
+        {{ partial "metadata" . }}
+    </head>
+
+    <body class="{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}list{{- end }} dark" id="top">
+         {{ partial "components/progressbar" . }}
+        <header class="header">
+            {{ partialCached "header.html" . }}
+        </header>
+        <main class="main">
+            {{ block "main" . }}{{ end }}
+        </main>
+        <footer class="footer">
+            {{ partialCached "footer.html" . }}
+        </footer>
+        {{ partial "components/back-to-top" . }}
+    </body>
+</html>

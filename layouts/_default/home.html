@@ -1,0 +1,51 @@
+{{ define "main" }}
+
+<article class="first-entry home-info">
+    <header class="entry-header">
+        <h1>{{- .Title | markdownify -}}</h1>
+    </header>
+    <div class="entry-content">
+        {{- .Summary | markdownify -}}
+    </div>
+    <footer class="entry-footer">
+        <div class="social-icons">
+            {{ range site.Menus.socials }}
+                <a href="{{- .URL | safeURL -}}" title="{{- .Name -}}">
+                    {{ partial "utils/svg-icons" .Name }}
+                </a>
+            {{ end }}
+        </div>
+    </footer>
+</article>
+
+{{ $posts := union .RegularPages .Sections }}
+{{ $posts = where site.RegularPages "Type" "in" "posts" }}   
+{{ if gt (len $posts) 0 }}
+    <div>
+        <h2 class="page-header">Recent Posts</h2>
+        {{ range $posts }}
+            {{ partial "components/entrycard" . }}
+        {{ end }}
+    </div>
+
+    <br>
+{{ end }}
+
+{{ $projects := union .RegularPages .Sections }}
+{{ $projects = where site.RegularPages "Type" "in" "projects" }}   
+
+{{ $completed := where $projects "Date" "eq" (time.AsTime (printf "0001-01-01")) }}
+{{ $ongoing := where $projects "Date" "gt" (time.AsTime (printf "0001-01-01")) }}
+
+{{ $projects = union $completed $ongoing }}
+
+{{ if gt (len $projects) 0 }}
+    <div>
+        <h2 class="page-header">Recent Projects</h2>
+        {{ range $projects }}
+            {{ partial "components/entrycard" . }}
+        {{ end }}
+    </div>
+{{ end }}
+
+{{ end }}

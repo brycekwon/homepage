@@ -1,0 +1,42 @@
+{{ $format := "January 2, 2006"}}
+{{ if eq .Type "projects" }}
+    {{ $format = "January 2006"}}
+{{ else if eq .Type "posts" }}
+    {{ $format = "January 2, 2006"}}
+{{ end }}
+
+<article class="post-entry tag-entry">
+    <div class="entry-header">
+        <h2 class="entry-hint-parent">
+            {{- .Title -}}
+        </h2>
+    </div>
+    <div class="entry-content">
+        <p>
+            {{- .Summary | plainify | htmlUnescape -}}
+        </p>
+    </div>
+    <div class="entry-footer">
+        {{ if eq .Page.Type "projects" }}
+            {{ range .Params.Tags | sort }}
+                {{ printf "#%s&nbsp;" .  | safeHTML }}
+            {{ end }}
+        {{ else }}
+                {{ $scratch := newScratch }}
+
+                {{ if not .Date.IsZero }}
+                    {{ $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format $format))) }}
+                {{ else }}
+                    {{ $scratch.Add "meta" (slice (printf "<i><span title='%s'>%s</span></i>" "Ongoing" " Ongoing")) }}
+                {{ end }}
+        
+                {{ $scratch.Add "meta" (printf "%d min" .ReadingTime) }}
+                {{ $scratch.Add "meta" (printf "%d words" .WordCount) }}
+        
+                {{ with ($scratch.Get "meta") }}
+                    {{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
+                {{ end }}
+        {{ end }}
+    </div>
+    <a class="entry-link" aria-label="post link to {{ .Title | plainify -}}" href="{{- .Permalink -}}"></a>
+</article>

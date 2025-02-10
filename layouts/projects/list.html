@@ -1,0 +1,32 @@
+{{ define "main" }}
+
+{{ partial "components/page-header" . }}
+
+{{ $pages := union .RegularPages .Sections }}
+{{ $completed := where $pages "Date" "eq" (time.AsTime (printf "0001-01-01")) }}
+{{ $ongoing := where $pages "Date" "gt" (time.AsTime (printf "0001-01-01")) }}
+{{ $pages = union $completed $ongoing }}
+{{ $paginator := .Paginate $pages }}
+
+{{ range $paginator.Pages }}
+    {{ partial "components/entrycard" . }}
+{{ end }}
+
+{{ if gt $paginator.TotalPages 1 }}
+    <div class="page-footer">
+        <nav class="pagination">
+            {{ if $paginator.HasPrev }}
+                <a class="prev" href="{{- $paginator.Prev.URL | absURL -}}">
+                    «&nbsp;Prev&nbsp;{{- sub $paginator.PageNumber 1 -}}/{{- $paginator.TotalPages -}}
+                </a>
+            {{ end }}
+            {{ if $paginator.HasNext }}
+                <a class="next" href="{{- $paginator.Next.URL | absURL -}}">
+                    Next&nbsp;{{- add $paginator.PageNumber 1 -}}/{{- $paginator.TotalPages -}}&nbsp;»
+                </a>
+            {{ end }}
+        </nav>
+    </div>
+{{ end }}
+
+{{ end }}

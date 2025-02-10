@@ -1,0 +1,17 @@
+ ________________________________________
+/ In theory, theory and practice are the \
+\ same. In practice, they are not.       /
+ ----------------------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+              ||----w |
+                ||     ||
+
+/* SITE */
+    Language: English
+    Last Updated: 2025-02-07 (v1.0.0)
+
+/* ATTRIBUTION */
+    Tools: Gohugo, Nginx, Docker
+    Design: WonderMod (https://github.com/Wonderfall/hugo-WonderMod/)

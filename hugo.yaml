@@ -1,0 +1,97 @@
+baseURL: "https://www.brycekwon.com/"
+languageCode: en-us
+
+title: "Bryce Kwon"
+copyright: "© 2025 Bryce Kwon"
+
+disableHugoGeneratorInject: true
+disableKinds: ["RSS", "robotsTXT"]
+
+minify:
+  minifyOutput: true
+
+outputs:
+  home: ["HTML", "JSON"]
+
+build:
+  buildStats:
+    enable: true
+  cachebusters:
+    - source: postcss\.config\.js
+      target: (css|styles)
+  noJSConfigInAssets: true
+
+markup:
+  highlight:
+    style: "dracula"
+    lineNos: false
+    noClasses: false
+    guessSyntax: true
+
+pagination:
+  disableAliases: false
+  pagerSize: 10
+  path: "page"
+
+removePathAccents: true
+permalinks:
+  projects: "/projects/:filename"
+  posts: "/posts/:year/:filename"
+  notes: "/notes/:year/:filename"
+
+taxonomies:
+  tag: tags
+
+params:
+  author: "Bryce Kwon"
+
+privacy:
+  disqus:
+    disable: true
+  googleAnalytics:
+    disable: true
+  instagram:
+    disable: true
+  twitter:
+    disable: true
+  vimeo:
+    disable: true
+  x:
+    disable: true
+  youtube:
+    disable: true
+
+menu:
+  main:
+    - name: "Projects"
+      url: "/projects/"
+      weight: 10
+    # - name: "posts"
+    #   url: "/posts/"
+    #   weight: 20
+    # - name: "notes"
+    #   url: "/notes/"
+    #   weight: 30
+    - name: "Tags"
+      url: "/tags/"
+      weight: 40
+    - name: "Search"
+      url: "/search/"
+      weight: 50
+  socials:
+    - name: "GitHub"
+      url: "https://github.com/brycekwon"
+      weight: 10
+    - name: "LinkedIn"
+      url: "https://www.linkedin.com/in/brycekwon"
+      weight: 20
+
+server:
+  headers:
+    - for: /**
+      values:
+        X-Frame-Options: "DENY"
+        X-Content-Type-Options: "nosniff"
+        Referrer-Policy: "no-referrer"
+        Permissions-Policy: "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+        Content-Security-Policy: "default-src 'none'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self'; font-src 'self'; base-uri 'self'; form-action 'self'; frame-src 'self'; frame-ancestors 'self'; object-src 'none'; upgrade-insecure-requests;"

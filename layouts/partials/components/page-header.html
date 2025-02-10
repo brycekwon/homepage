@@ -1,0 +1,15 @@
+<div class="page-header">
+    {{ partial "components/breadcrumbs" . }}
+    <h1>
+        {{- .Title -}}
+    </h1>
+    {{ if .Summary }}
+        <div class="post-description">
+            {{- .Summary | markdownify -}}
+        </div>
+    {{ else if .Description }}
+        <div class="post-description">
+            {{- .Description | markdownify -}}
+        </div>
+    {{ end }}
+</div>
