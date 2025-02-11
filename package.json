@@ -1,7 +1,7 @@
 {
     "name": "homepage",
     "version": "1.0.0",
-    "description": "Simple static website that aggregates all my projects, posts, and stats.",
+    "description": "Simple developer portfolio that aggregates projects, posts, and stats.",
     "type": "module",
     "scripts": {
         "gen": "hugo build --gc --cleanDestinationDir --templateMetrics --templateMetricsHints",

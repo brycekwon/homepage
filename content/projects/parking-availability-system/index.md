@@ -1,5 +1,5 @@
 ---
-title: "University Parking Availability System"
+title: "Parking Availability System"
 summary: "Proof-of-Concept system for real-time monitoring of parking space availability, designed to be low-cost, low-maintenance, and scalable."
 links:
   - name: "code"
@@ -13,9 +13,13 @@ keywords:
   - "Chirpstack"
   - "Parking Management"
 tags:
+  - "website"
   - "networks"
   - "python"
+  - "golang"
+  - "javascript"
   - "docker"
+  - "nginx"
 ---
 
 ![A diagram illistrating a LoRaWAN network architecture. Three end-devices connect to a LoRaWAN gateway, which forwards data to a LoRaWAN network server. The network server then communicates changes with the LoRaWAN web application](ProjectArchitecture.webp)

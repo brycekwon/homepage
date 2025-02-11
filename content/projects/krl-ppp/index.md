@@ -1,7 +1,7 @@
 ---
-title: "Kimball Research Lab: Processing Pipeline"
+title: "Kimball Research Lab - Patch Processing Pipeline"
 summary: "Modular pipeline for parsing, processing, and analyzing biomedical signals from analog sensors with the goal of finding correlations indicative of hypovolemia."
-date: "2024-01-01"
+date: "2025-01-01"
 links:
   - name: "home"
     url: "https://sites.up.edu/krl/"
@@ -14,6 +14,7 @@ keywords:
   - "Signal Processing"
 tags:
   - "python"
+  - "jupyter"
   - "biomedicine"
   - "statistics"
 ---

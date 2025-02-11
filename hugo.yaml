@@ -35,9 +35,9 @@ pagination:
 
 removePathAccents: true
 permalinks:
-  projects: "/projects/:filename"
-  posts: "/posts/:year/:filename"
-  notes: "/notes/:year/:filename"
+  projects: "/:section/:filename"
+  posts: "/:section/:year/:filename"
+  notes: "/:section/:year/:filename"
 
 taxonomies:
   tag: tags
