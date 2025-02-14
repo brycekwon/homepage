@@ -16,7 +16,7 @@ RUN npm ci --omit=dev
 COPY --chown=hugo:hugo ./postcss.config.js ./postcss.config.js
 
 # copy hugo configuration
-COPY --chown=hugo:hugo ./hugo.yaml ./hugo.yaml
+COPY --chown=hugo:hugo ./config ./config
 
 # copy source files, ordered from most to least often changed to take
 # advantage of Docker's built-in caching.
