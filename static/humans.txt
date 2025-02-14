@@ -10,7 +10,7 @@
 
 /* SITE */
     Language: English
-    Last Updated: 2025-02-07 (v1.0.0)
+    Last Updated: 2025-02-14 (v1.0.1)
 
 /* ATTRIBUTION */
     Tools: Gohugo, Nginx, Docker
