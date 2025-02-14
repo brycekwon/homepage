@@ -42,14 +42,14 @@
 <meta property="og:title" content="{{- $title -}}">
 <meta property="og:description" content="{{- $description -}}">
 <meta property="og:url" content="{{- .Permalink -}}">
-<meta property="og:image" content="{{- with resources.Get `img/profile.webp` -}}{{- .Permalink -}}{{- end -}}">
+<meta property="og:image" content="{{- with resources.Get `img/profile.webp` -}}{{- $image := . | fingerprint `sha256` -}}{{- $image.Permalink -}}{{- end -}}">
 
 <!-- Twitter / X Metadata -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{{- $title -}}">
 <meta name="twitter:description" content="{{- $description -}}">
 <meta name="twitter:url" content="{{- .Permalink -}}">
-<meta name="twitter:image" content="{{- with resources.Get `img/profile.webp` -}}{{- .Permalink -}}{{- end -}}">
+<meta name="twitter:image" content="{{- with resources.Get `img/profile.webp` -}}{{- $image := . | fingerprint `sha256` -}}{{- $image.Permalink -}}{{- end -}}">
 
 <script type="application/ld+json">
     {{ if eq .Section "posts" }}
