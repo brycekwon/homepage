@@ -1,26 +1,12 @@
 function loadPreferredTheme() {
-    const preferredTheme = localStorage.getItem("pref-theme");
-    const isDarkTheme = document.body.classList.contains("dark");
+    const prefTheme = localStorage.getItem("pref-theme");
+    const isDark = document.body.classList.contains("dark");
 
-    if (preferredTheme === "light" && isDarkTheme) {
+    if (prefTheme === "light" && isDark) {
         document.body.classList.remove('dark')
-    } else if (preferredTheme === "dark" && !isDarkTheme) {
+    } else if (prefTheme === "dark" && !isDark) {
         document.body.classList.add('dark')
     }
-}
-
-function scrollToTop() {
-    const topButton = document.getElementById("top-link");
-
-    document.addEventListener('scroll', () => {
-        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
-            topButton.style.visibility = "visible";
-            topButton.style.opacity = "1";
-        } else {
-            topButton.style.visibility = "hidden";
-            topButton.style.opacity = "0";
-        }
-    })
 }
 
 function themeToggle() {
@@ -110,7 +96,6 @@ function progressBar() {
 }
 
 loadPreferredTheme();
-scrollToTop();
 themeToggle();
 showCodeCopyButtons();
 openToc();
