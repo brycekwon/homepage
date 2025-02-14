@@ -35,6 +35,9 @@ RUN npm run gen
 ###############################################################################
 FROM docker.io/nginx:1.27.3-alpine-slim
 
+# install curl for running healthchecks
+RUN apk add curl
+
 # copy nginx configuration
 COPY --chown=nginx:nginx ./nginx.conf /etc/nginx/nginx.conf
 
