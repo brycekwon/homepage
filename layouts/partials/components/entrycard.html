@@ -1,8 +1,8 @@
-{{ $format := "January 2, 2006"}}
+{{ $format := "January 2, 2006" }}
 {{ if eq .Type "projects" }}
-    {{ $format = "January 2006"}}
+    {{ $format = "January 2006" }}
 {{ else if eq .Type "posts" }}
-    {{ $format = "January 2, 2006"}}
+    {{ $format = "January 2, 2006" }}
 {{ end }}
 
 <article class="post-entry tag-entry">
@@ -25,9 +25,7 @@
                 {{ $scratch := newScratch }}
 
                 {{ if not .Date.IsZero }}
-                    {{ $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format $format))) }}
-                {{ else }}
-                    {{ $scratch.Add "meta" (slice (printf "<i><span title='%s'>%s</span></i>" "Ongoing" " Ongoing")) }}
+                    {{ $scratch.Add "meta" (slice (printf "<span title='%s'>%s</span>" (.Date) (.Date | time.Format $format) | safeHTML)) }}
                 {{ end }}
         
                 {{ $scratch.Add "meta" (printf "%d min" .ReadingTime) }}
