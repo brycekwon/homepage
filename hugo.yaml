@@ -44,6 +44,7 @@ taxonomies:
 
 params:
   author: "Bryce Kwon"
+  headline: "Computer Science Undergraduate"
 
 privacy:
   disqus:

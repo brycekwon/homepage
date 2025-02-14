@@ -12,7 +12,7 @@
     {{ $title = printf "%s | %s" .Title .Site.Title }}
 {{ end }}
 {{ if .IsHome }}
-    {{ $title = printf "%s" .Site.Params.author }}
+    {{ $title = printf "%s - %s" .Site.Params.author  .Site.Params.headline}}
 {{ end }}
 
 {{ $description := "" }}
