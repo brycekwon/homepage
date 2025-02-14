@@ -42,14 +42,14 @@
 <meta property="og:title" content="{{- $title -}}">
 <meta property="og:description" content="{{- $description -}}">
 <meta property="og:url" content="{{- .Permalink -}}">
-<meta property="og:image" content="{{- with resources.Get "img/profile.webp" -}}{{- .Permalink -}}{{- end -}}">
+<meta property="og:image" content="{{- with resources.Get `img/profile.webp` -}}{{- .Permalink -}}{{- end -}}">
 
 <!-- Twitter / X Metadata -->
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{{- $title -}}">
 <meta name="twitter:description" content="{{- $description -}}">
 <meta name="twitter:url" content="{{- .Permalink -}}">
-<meta name="twitter:image" content="{{- with resources.Get "img/profile.webp" -}}{{- .Permalink -}}{{- end -}}">
+<meta name="twitter:image" content="{{- with resources.Get `img/profile.webp` -}}{{- .Permalink -}}{{- end -}}">
 
 <script type="application/ld+json">
     {{ if eq .Section "posts" }}
@@ -91,7 +91,7 @@
             "name": "{{- .Site.Title -}}",
             "url": "{{- .Permalink -}}",
         }
-    {{ end }}
+        {{ end }}
 </script>
 
 {{ $theme_vars := (resources.Get "css/core/theme-vars.css") }}
@@ -105,15 +105,10 @@
 {{ $stylesheet := (slice $core $includes) | resources.Concat "css/styles.css" | postCSS | minify | fingerprint "sha256" | resources.PostProcess }}
 <link crossorigin="anonymous" href="{{- $stylesheet.Permalink -}}" integrity="{{- $stylesheet.Data.Integrity -}}" rel="preload stylesheet" as="style">
 
+{{ $script := resources.Get "js/theme.js" | js.Build (dict `format` `esm`) | minify | fingerprint "sha256" }}
+<script defer crossorigin="anonymous" src="{{- $script.Permalink -}}" integrity="{{- $script.Data.Integrity -}}"></script>
+
 <noscript>
     {{ $noscript := resources.Get "css/noscript.css" | postCSS | minify | fingerprint "sha256" | resources.PostProcess }}
     <link crossorigin="anonymous" href="{{- $noscript.Permalink -}}" integrity="{{- $noscript.Data.Integrity -}}" rel="preload stylesheet" as="style">
 </noscript>
-
-{{ if (eq .Layout `search`) }}
-    {{ $search := resources.Get "js/search.js" | js.Build (dict "format" "esm") | minify | fingerprint "sha256" }}
-    <script defer crossorigin="anonymous" src="{{- $search.Permalink -}}" integrity="{{- $search.Data.Integrity -}}"></script>
-{{ end }}
-
-{{ $script := resources.Get "js/theme.js" | js.Build (dict "format" "esm") | minify | fingerprint "sha256" }}
-<script defer crossorigin="anonymous" src="{{- $script.Permalink -}}" integrity="{{- $script.Data.Integrity -}}"></script>

@@ -3,8 +3,9 @@
 <html lang="{{- site.Language -}}" dir="ltr">
     <head>
         {{ partial "metadata" . }}
+        {{ block "extra_css" . }}{{ end }}
+        {{ block "extra_js" . }}{{ end }}
     </head>
-
     <body class="{{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}list{{- end }} dark" id="top">
          {{ partial "components/progressbar" . }}
         <header class="header">
