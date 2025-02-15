@@ -1,5 +1,5 @@
 ###############################################################################
-# Production Docker Build                                                     #
+# Development Docker Build                                                    #
 # Author: Bryce Kwon                                                          #
 ###############################################################################
 
@@ -12,9 +12,9 @@ FROM docker.io/hugomods/hugo:node-non-root-0.143.0 AS builder
 USER hugo
 WORKDIR /usr/share/hugo
 
-# set build environment to production
-ENV NODE_ENV=production
-ENV HUGO_ENVIRONMENT=production
+# set build environment to development
+ENV NODE_ENV=development
+ENV HUGO_ENVIRONMENT=development
 
 # copy and install npm packages
 COPY --chown=hugo:hugo package.json ./package.json
@@ -37,7 +37,7 @@ COPY --chown=hugo:hugo ./layouts ./layouts
 COPY --chown=hugo:hugo ./content ./content
 
 # build website
-RUN npm run gen
+RUN npm run gen --buildDrafts
 
 ###############################################################################
 # Nginx Website Hosting                                                       #

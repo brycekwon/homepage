@@ -1,5 +1,5 @@
 ###############################################################################
-# Production Docker Build                                                     #
+# Staging Docker Build                                                        #
 # Author: Bryce Kwon                                                          #
 ###############################################################################
 
@@ -12,9 +12,9 @@ FROM docker.io/hugomods/hugo:node-non-root-0.143.0 AS builder
 USER hugo
 WORKDIR /usr/share/hugo
 
-# set build environment to production
+# set build environment to development
 ENV NODE_ENV=production
-ENV HUGO_ENVIRONMENT=production
+ENV HUGO_ENVIRONMENT=staging
 
 # copy and install npm packages
 COPY --chown=hugo:hugo package.json ./package.json

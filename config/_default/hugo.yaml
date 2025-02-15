@@ -1,14 +1,9 @@
-baseURL: "https://www.brycekwon.com/"
-languageCode: en-us
-
 title: "Bryce Kwon"
+languageCode: en-us
 copyright: "© 2025 Bryce Kwon"
 
 disableHugoGeneratorInject: true
 disableKinds: ["RSS", "robotsTXT"]
-
-minify:
-  minifyOutput: true
 
 outputs:
   home: ["HTML", "JSON"]

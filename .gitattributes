@@ -16,6 +16,8 @@
 *.yaml          text eol=lf
 *.conf          text eol=lf linguist-detectable=true
 
+Dockerfile*     text eol=lf linguist-language=Dockerfile
+
 *.png           binary
 *.jpg           binary
 *.jpeg          binary
