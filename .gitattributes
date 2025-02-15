@@ -8,8 +8,8 @@
 *.cjs           text eol=lf
 *.json          text eol=lf
 
-*.md            text eol=lf linguist-detectable=true
-*.markdown      text eol=lf linguist-detectable=true
+*.md            text eol=lf
+*.markdown      text eol=lf
 *.txt           text eol=lf
 
 *.yml           text eol=lf
