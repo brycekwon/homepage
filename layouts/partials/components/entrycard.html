@@ -5,7 +5,7 @@
     {{ $format = "January 2, 2006" }}
 {{ end }}
 
-<article class="post-entry tag-entry">
+<section class="post-entry tag-entry">
     <div class="entry-header">
         <h2 class="entry-hint-parent">
             {{- .Title -}}
@@ -37,4 +37,4 @@
         {{ end }}
     </div>
     <a class="entry-link" aria-label="post link to {{ .Title | plainify -}}" href="{{- .Permalink -}}"></a>
-</article>
+</section>
