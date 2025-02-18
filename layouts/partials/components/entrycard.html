@@ -34,12 +34,6 @@
                 {{ with ($scratch.Get "meta") }}
                     {{- delimit . "&nbsp;·&nbsp;" | safeHTML -}}
                 {{ end }}
-
-                &nbsp;·&nbsp;
-
-                {{ range .Params.Tags | sort }}
-                    {{ printf "#%s&nbsp;" .  | safeHTML }}
-                {{ end }}
         {{ end }}
     </div>
     <a class="entry-link" aria-label="post link to {{ .Title | plainify -}}" href="{{- .Permalink -}}"></a>
