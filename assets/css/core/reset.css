@@ -5,10 +5,8 @@
 }
 
 html {
-    -webkit-tap-highlight-color: transparent;
     overflow-y: scroll;
     scroll-behavior: smooth;
-    -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
 }
 
@@ -106,11 +104,6 @@ button,
 input[type=button],
 input[type=submit] {
     cursor: pointer;
-}
-
-input:-webkit-autofill,
-textarea:-webkit-autofill {
-    box-shadow: 0 0 0 50px var(--theme) inset;
 }
 
 img {
