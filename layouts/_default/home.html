@@ -23,7 +23,7 @@
 {{ if gt (len $posts) 0 }}
     <div>
         <h2 class="page-header">Recent Posts</h2>
-        {{ range $posts }}
+        {{ range first 3 $posts }}
             {{ partial "components/entrycard" . }}
         {{ end }}
     </div>
@@ -42,7 +42,7 @@
 {{ if gt (len $projects) 0 }}
     <div>
         <h2 class="page-header">Recent Projects</h2>
-        {{ range $projects }}
+        {{ range first 3 $projects }}
             {{ partial "components/entrycard" . }}
         {{ end }}
     </div>
