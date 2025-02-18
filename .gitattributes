@@ -18,6 +18,8 @@
 
 Dockerfile*     text eol=lf linguist-language=Dockerfile
 
+*.sh            text eol=lf
+
 *.png           binary
 *.jpg           binary
 *.jpeg          binary
