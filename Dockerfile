@@ -1,9 +1,4 @@
 ###############################################################################
-# Production Docker Build                                                     #
-# Author: Bryce Kwon                                                          #
-###############################################################################
-
-###############################################################################
 # Hugo Website Build                                                          #
 ###############################################################################
 FROM docker.io/hugomods/hugo:node-non-root-0.143.0 AS builder
@@ -45,7 +40,7 @@ RUN npm run gen
 FROM docker.io/nginx:1.27.3-alpine-slim
 
 # install curl for running healthchecks
-RUN apk add curl
+RUN apk update && apk add --no-cache curl && rm -rf /var/cache/apk/*
 
 # copy nginx configuration
 COPY --chown=nginx:nginx ./nginx.conf /etc/nginx/nginx.conf
