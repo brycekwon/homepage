@@ -1,6 +1,6 @@
 {
     "name": "homepage",
-    "version": "1.0.2",
+    "version": "2025-02-20",
     "description": "Simple developer portfolio that aggregates projects, posts, and stats.",
     "type": "module",
     "scripts": {
