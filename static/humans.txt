@@ -14,4 +14,5 @@
 
 /* ATTRIBUTION */
     Tools: Gohugo, Nginx, Docker
-    Design: WonderMod (https://github.com/Wonderfall/hugo-WonderMod/)
+    Design: WonderMod [v6.0] (https://github.com/Wonderfall/hugo-WonderMod/)
+    Search: Fuse.js [v7.1.0] (http://fusejs.io)
