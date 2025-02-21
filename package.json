@@ -6,8 +6,10 @@
     "scripts": {
         "gen": "hugo build --gc --cleanDestinationDir --templateMetrics --templateMetricsHints",
         "dev": "hugo server --gc --cleanDestinationDir --buildDrafts --disableFastRender --watch",
-        "clean": "rm -rf public/ resources/ .hugo_build.lock hugo_stats.json",
-        "lint": "eslint assets/js/*.js --no-warn-ignored"
+        "clean": "rm -rf public/ resources/ .hugo_build.lock hugo_stats.json hugo_audit.log",
+        "lint": "eslint assets/js/*.js --no-warn-ignored",
+        "safelist": "./tools/css-safelist.sh",
+        "audit": "./tools/site-audit.sh"
     },
     "dependencies": {
         "@fullhuman/postcss-purgecss": "^7.0.2",
