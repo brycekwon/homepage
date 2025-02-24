@@ -20,6 +20,7 @@ tags:
   - "javascript"
   - "docker"
   - "nginx"
+draft: false
 ---
 
 ![A diagram illistrating a LoRaWAN network architecture. Three end-devices connect to a LoRaWAN gateway, which forwards data to a LoRaWAN network server. The network server then communicates changes with the LoRaWAN web application](ProjectArchitecture.webp)
