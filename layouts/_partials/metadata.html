@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{ $title := "" }}
+{{ if .IsHome }}
+{{ $title = site.Title }}
+{{ else if .IsSection }}
+{{ $title = printf "%s | %s" .Title site.Title }}
+{{ else }}
+{{ $title = .Title }}
+{{ end }}
+
+<title>{{- $title -}}</title>
+<meta name="application-name" content="Bryce's Website">
+<meta name="description" content="{{- .Description -}}">
+<meta name="keywords" content="{{- delimit .Keywords `, ` | default `` -}}">
+<link rel="canonical" href="{{- .Permalink -}}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{- $title -}}">
+<meta property="og:site_name" content="{{- $title -}}">
+<meta property="og:description" content="{{- .Description -}}">
+<meta property="og:url" content="{{- .Permalink -}}">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+
+{{ $styles := resources.Get "styles.css" | minify | fingerprint "sha256" }}
+<link rel="preload" href="{{- $styles.RelPermalink -}}" integrity="{{- $styles.Data.Integrity -}}" as="style">
+<link rel="stylesheet" type="text/css" href="{{- $styles.RelPermalink -}}" integrity="{{- $styles.Data.Integrity -}}">
+
+{{ $_ := .Content }} {{/* https://github.com/gohugoio/hugoDocs/issues/2402 */}}
+{{ if (.Page.Store.Get "hasCodeBlock") }}
+{{ $styles := resources.Get "chroma.css" | minify | fingerprint "sha256" }}
+<link rel="preload" href="{{- $styles.RelPermalink -}}" integrity="{{- $styles.Data.Integrity -}}" as="style">
+<link rel="stylesheet" type="text/css" href="{{- $styles.RelPermalink -}}" integrity="{{- $styles.Data.Integrity -}}">
+{{ end }}

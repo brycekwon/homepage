@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    {{ partial "metadata" . }}
+  </head>
+  <body>
+    <header>
+      {{ partialCached "header" . }}
+    </header>
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+    <footer>
+      {{ partialCached "footer" . }}
+    </footer>
+  </body>
+</html>

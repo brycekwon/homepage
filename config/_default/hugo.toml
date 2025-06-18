@@ -1,0 +1,46 @@
+title = "Bryce's Website"
+copyright = "© 2025 Bryce Kwon"
+
+disableHugoGeneratorInject = true
+disableKinds = ["rss", "robotstxt"]
+
+templateMetrics = true
+templateMetricsHints = true
+
+noBuildLock = true
+cleanDestinationDir = true
+
+removePathAccents = true
+
+[build]
+    noJSConfigInAssets = true
+
+[minify]
+    minifyOutput = true
+
+[markup]
+    [markup.highlight]
+        lineNos = false
+        noClasses = false
+
+[languages]
+    [languages.en]
+        languageName = "English"
+        languageCode = "en-US"
+        languageDirection = "ltr"
+
+[taxonomies]
+    tag = "tags"
+    # category = "categories"
+
+[permalinks]
+    [permalinks.section]
+        posts = "/posts/"
+    [permalinks.page]
+        posts = "/posts/:year/:slugorcontentbasename"
+    [permalinks.taxonomy]
+        tag = "/tag/"
+        # category = "/category/"
+    [permalinks.term]
+        tag = "/tag/:slug"
+        # category = "/category/:slug"

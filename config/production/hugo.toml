@@ -1,0 +1,7 @@
+baseURL = "https://www.brycekwon.com"
+
+environment = "production"
+
+buildDrafts = false
+buildFuture = false
+buildExpired = false

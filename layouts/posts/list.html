@@ -1,0 +1,21 @@
+{{ define "main" }}
+<article>
+  <header>
+    <h1>{{- .Title -}}</h1>
+  </header>
+  {{- .Content -}}
+</article>
+<ul class="list">
+  {{ range .Pages }}
+  <li>
+    <time datetime="{{- .Date.Format `2006-01-02` -}}">{{- .Date.Format "Jan 02, 2006" -}}</time>
+    <a href="{{- .RelPermalink -}}" title="{{- .Title -}}">{{- .Title -}}</a>
+  </li>
+  {{ end }}
+</ul>
+<div class="tags">
+  {{ range site.Taxonomies.tags }}
+  <a href="{{- .Page.RelPermalink -}}" title="Posts tagged with {{ .Page.Title -}}">#{{- lower .Page.Title -}}</a>
+  {{ end }}
+</div>
+{{ end }}

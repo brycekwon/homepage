@@ -1,0 +1,8 @@
+<strong>{{- site.Title -}}</strong>
+<nav>
+  {{ range site.Menus.main }}
+  <a href="{{- .URL -}}" title="Link to {{ .Name -}}">
+    {{- .Name -}}
+  </a>
+  {{ end }}
+</nav>

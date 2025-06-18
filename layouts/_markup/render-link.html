@@ -1,0 +1,4 @@
+<a href="{{- .Destination | safeURL -}}" {{- if (urls.Parse .Destination).IsAbs }} rel="noreferrer nofollow"{{- end -}}>
+  {{- with .Text -}}{{- . -}}{{- end -}}
+</a>
+{{- /**/ -}}

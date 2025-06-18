@@ -1,0 +1,26 @@
+{{ define "main" }}
+<article>
+  <header>
+    <h1>{{- .Title -}}</h1>
+    <div class="metadata">
+      <time datetime="{{- .Date.Format `2006-01-02` -}}">{{- .Date.Format "January 2, 2006" -}}</time>
+      &#183;&nbsp;<span>{{- .ReadingTime }} Minutes</span>
+      &#183;&nbsp;<span>{{- .WordCount }} Words</span>
+      {{ range .Params.Links }}
+      &#183;&nbsp;<a href="{{- .url -}}" title="{{- .name -}}">{{- .name -}}</a>
+      {{ end }}
+    </div>
+    {{ if not (eq .Date .Lastmod) }}
+    <div class="metadata">
+      <i>Last Updated: <time datetime="{{- .Lastmod.Format `2006-01-02` -}}">{{- .Lastmod.Format "January 2, 2006" -}}</time></i>
+    </div>
+    {{ end }}
+  </header>
+  {{ .Content | replaceRE "(<h[1-6] id=\"([^\"]+)\".+)(</h[1-6]+>)" "${1}<a hidden class=\"anchor\" aria-hidden=\"true\" href=\"#${2}\">#</a>${3}" | safeHTML }}
+</article>
+<div class="tags">
+  {{ range (.GetTerms "tags") }}
+  <a href="{{- .Page.RelPermalink -}}" title="Posts tagged with {{ .Page.Title -}}">#{{- lower .Page.Title -}}</a>
+  {{ end }}
+</div>
+{{ end }}
