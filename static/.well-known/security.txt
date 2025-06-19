@@ -2,12 +2,13 @@
 Hash: SHA512
 
 Contact: mailto:bryce@brycekwon.com
-Expires: 2026-05-29T00:00:00.000Z
+Encryption: https://www.brycekwon.com/brycekwon.asc
 Canonical: https://www.brycekwon.com/.well-known/security.txt
+Expires: 2026-05-29T00:00:00.000Z
 -----BEGIN PGP SIGNATURE-----
 
-iHUEARYKAB0WIQQdLx/Lg982bFxcwK8MXJIJbRpwDAUCaEvGqAAKCRAMXJIJbRpw
-DOj5AQCQ5hGPmiE0isq7+8L3YkhMv24lGjq8NqK89xNHkcWtywD9FgW7o7C2fZFk
-6c/DvHSLd+WOZu9Orr8oTVy/rGX4SQ8=
-=bDeS
+iHUEARYKAB0WIQQdLx/Lg982bFxcwK8MXJIJbRpwDAUCaFNqrAAKCRAMXJIJbRpw
+DFICAP9jtUA6DmFCDDbJ3tTdjybKXA7Vm24AKNKDfM07lxD48gD/YzvFkTqXylPQ
+NXK1eirXZtbV9y3RcY+2iy11I71hgAQ=
+=1tAT
 -----END PGP SIGNATURE-----
