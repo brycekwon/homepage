@@ -6,6 +6,17 @@
   --li: #89b4fa;
 }
 
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg1: #e6e9ef;
+        --bg2: #181825;
+        --co1: #4c4f69;
+        --co2: #6c6f85;
+        --li: #1e66f5;
+    }
+
+}
+
 body {
   color: var(--co1);
   background-color: var(--bg1);
