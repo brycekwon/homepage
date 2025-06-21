@@ -10,10 +10,9 @@ body {
   color: var(--co1);
   background-color: var(--bg1);
 
-  font: 18px/1.5 avenir, sans-serif;
+  font: 18px/1.5 -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, Adwaita Sans, Cantarell, Ubuntu, roboto, noto, helvetica, arial, sans-serif;
 
   max-width: 768px;
-
   margin: 0 auto;
   padding: 24px;
 }
